@@ -1,7 +1,7 @@
 .about {
-  padding: 4rem 1.5rem;
-  background: #f8fafc;
-  color: #0f172a;
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 4vw, 1.5rem);
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .about__inner {
@@ -11,23 +11,23 @@
 
 .about__heading {
   margin: 0 0 2rem;
-  font-size: 1.75rem;
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
   letter-spacing: 0.04em;
-  border-bottom: 2px solid #2563eb;
+  border-bottom: 2px solid var(--color-accent);
   padding-bottom: 0.5rem;
   display: inline-block;
 }
 
 .about__body {
   display: flex;
-  gap: 2.5rem;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
   align-items: flex-start;
   flex-wrap: wrap;
 }
 
 .about__avatar {
-  width: 160px;
-  height: 160px;
+  width: clamp(120px, 22vw, 160px);
+  height: clamp(120px, 22vw, 160px);
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
@@ -36,6 +36,7 @@
 
 .about__text {
   flex: 1 1 320px;
+  min-width: 0;
 }
 
 .about__name {
@@ -47,13 +48,13 @@
 .about__bio {
   margin: 0 0 1.5rem;
   line-height: 1.85;
-  color: #334155;
+  color: var(--color-text-muted);
 }
 
 .about__facts {
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem 1.5rem;
 }
 
@@ -62,15 +63,28 @@
 }
 
 .about__fact dt {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #64748b;
+  color: var(--color-text-muted);
   margin-bottom: 0.25rem;
 }
 
 .about__fact dd {
   margin: 0;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+  .about__body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about__text {
+    text-align: left;
+    width: 100%;
+  }
 }

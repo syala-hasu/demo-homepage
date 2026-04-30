@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import './Layout.css'
 
 const navItems = [
@@ -8,6 +9,13 @@ const navItems = [
 ]
 
 function Layout() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
   return (
     <div className="layout">
       <header className="site-header">
@@ -15,7 +23,25 @@ function Layout() {
           <NavLink to="/" className="site-logo" end>
             Demo Homepage
           </NavLink>
-          <nav aria-label="Primary">
+          <button
+            type="button"
+            className="site-header__toggle"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="primary-nav"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span className={`hamburger ${menuOpen ? 'hamburger--open' : ''}`} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          </button>
+          <nav
+            id="primary-nav"
+            aria-label="Primary"
+            className={`site-nav-wrapper ${menuOpen ? 'site-nav-wrapper--open' : ''}`}
+          >
             <ul className="site-nav">
               {navItems.map((item) => (
                 <li key={item.to}>
