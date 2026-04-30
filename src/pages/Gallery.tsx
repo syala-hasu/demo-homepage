@@ -17,14 +17,18 @@ function Gallery() {
       <h1>Gallery</h1>
       <ul className="gallery-grid">
         {photos.map((photo, i) => (
-          <li key={photo.src}>
+          <li key={photo.id}>
             <button
               type="button"
               className="gallery-item"
               onClick={() => setOpenIndex(i)}
-              aria-label={`${photo.caption} を拡大表示`}
+              aria-label={`${photo.location} の写真を拡大表示`}
             >
-              <img src={photo.thumb} alt={photo.caption} loading="lazy" />
+              <img src={photo.src} alt={photo.alt} loading="lazy" />
+              <span className="gallery-meta">
+                <span className="gallery-location">{photo.location}</span>
+                <span className="gallery-caption">{photo.caption}</span>
+              </span>
             </button>
           </li>
         ))}

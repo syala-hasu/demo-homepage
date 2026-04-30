@@ -60,9 +60,10 @@ function Lightbox({ photos, index, onClose, onPrev, onNext }: LightboxProps) {
         ‹
       </button>
       <figure className="lightbox-figure" onClick={(e) => e.stopPropagation()}>
-        <img src={photo.src} alt={photo.caption} className="lightbox-image" />
+        <img src={photo.src} alt={photo.alt} className="lightbox-image" />
         <figcaption className="lightbox-caption">
-          {photo.caption}
+          <span className="lightbox-location">{photo.location}</span>
+          <span>{photo.caption}</span>
           <span className="lightbox-counter">
             {index + 1} / {photos.length}
           </span>

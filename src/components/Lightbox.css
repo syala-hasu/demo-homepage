@@ -36,6 +36,11 @@
   gap: 0.25rem;
 }
 
+.lightbox-location {
+  font-weight: 600;
+  color: #fff;
+}
+
 .lightbox-counter {
   color: #aaa;
   font-size: 0.8rem;
