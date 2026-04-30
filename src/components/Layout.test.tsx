@@ -39,4 +39,21 @@ describe('Layout', () => {
     await user.click(screen.getByRole('link', { name: 'Gallery' }))
     expect(screen.getByRole('heading', { level: 1, name: 'Gallery' })).toBeInTheDocument()
   })
+
+  it('toggles the mobile menu via the hamburger button', async () => {
+    const user = userEvent.setup()
+    renderAt('/')
+    const toggle = screen.getByLabelText('Open menu')
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    await user.click(toggle)
+    expect(screen.getByLabelText('Close menu')).toHaveAttribute('aria-expanded', 'true')
+  })
+
+  it('closes the mobile menu after navigation', async () => {
+    const user = userEvent.setup()
+    renderAt('/')
+    await user.click(screen.getByLabelText('Open menu'))
+    await user.click(screen.getByRole('link', { name: 'Blog' }))
+    expect(screen.getByLabelText('Open menu')).toHaveAttribute('aria-expanded', 'false')
+  })
 })
