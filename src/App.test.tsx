@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect } from 'vitest'
 import App from './App'
+import { persona } from './data/persona'
 
 function renderAt(path: string) {
   return render(
@@ -12,9 +13,11 @@ function renderAt(path: string) {
 }
 
 describe('App routing', () => {
-  it('renders the Home page at /', () => {
+  it('renders the Home page Hero and About at /', () => {
     renderAt('/')
-    expect(screen.getByRole('heading', { level: 1, name: 'Home' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: persona.tagline })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'About' })).toBeInTheDocument()
+    expect(screen.getByText(persona.bio)).toBeInTheDocument()
   })
 
   it('renders the Blog page at /blog', () => {

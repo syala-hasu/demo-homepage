@@ -1,5 +1,13 @@
+import About from '../components/About'
+import Hero from '../components/Hero'
+
 function Home() {
-  return <h1>Home</h1>
+  return (
+    <>
+      <Hero />
+      <About />
+    </>
+  )
 }
 
 export default Home
