@@ -18,6 +18,10 @@ describe('App routing', () => {
     expect(screen.getByRole('heading', { level: 1, name: persona.tagline })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 2, name: 'About' })).toBeInTheDocument()
     expect(screen.getByText(persona.bio)).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: persona.heroImageAlt })).toHaveAttribute(
+      'src',
+      persona.heroImageUrl,
+    )
   })
 
   it('renders the Blog page at /blog', () => {
