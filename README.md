@@ -33,3 +33,13 @@ pnpm build
 pnpm lint
 pnpm format
 ```
+
+## テスト
+
+Vitest + React Testing Library で単体テストを実行します。
+
+```sh
+pnpm test       # watch モード
+pnpm test:run   # 1 回だけ実行 (CI 向け)
+pnpm test:ui    # ブラウザ UI 付き
+```
